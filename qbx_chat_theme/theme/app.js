@@ -3,13 +3,12 @@
 
     const data = await fetchNui('config');
 
-    /** @type {{ property: string; value: string | null }[]} */
     const vars = [
-        { property: '--main-color', value: data.mainColor },
-        { property: '--border-color', value: data.borderColor },
-        { property: '--text-color', value: data.textColor },
-        { property: '--faint-color', value: data.faintColor },
-        { property: '--font-family', value: data.fontFamily },
+        { property: '--main-color', value: data.mainColor ?? 'rgba(8, 10, 16, 0.88)' },
+        { property: '--border-color', value: data.borderColor ?? 'rgba(0, 174, 255, 0.25)' },
+        { property: '--text-color', value: data.textColor ?? 'rgba(255, 255, 255, 0.9)' },
+        { property: '--faint-color', value: data.faintColor ?? 'rgba(255, 255, 255, 0.45)' },
+        { property: '--font-family', value: data.fontFamily ?? "'Nunito', sans-serif" },
         { property: '--console-font-family', value: data.consoleFontFamily },
         { property: '--suggestion-font-family', value: data.suggestionFontFamily },
         { property: '--input-icon-url', value: `url(${data.inputIconUrl})` },
@@ -24,10 +23,6 @@
         document.documentElement.style.setProperty(property, value);
     }
 
-    /**
-     * @param {string} endpoint
-     * @param {unknown} data
-     */
     async function fetchNui(endpoint, data) {
         const body = typeof data === 'undefined' || data === null ? null : JSON.stringify(data);
 
