@@ -12,6 +12,19 @@ return {
             },
         },
     },
+    ['powerwashing'] = {
+    label = 'Dirty Hose',
+        defaultDuty = true,
+        offDutyPay = false,
+        grades = {
+            ['0'] = {
+                name = 'Powerwasher',
+                payment = 50,
+            },
+        },
+    },
+
+
 ['police'] = {
     label = 'Capital Police',
     type = 'leo',
